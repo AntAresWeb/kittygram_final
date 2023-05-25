@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - main
-      - develop
-  pull_request:
-    branches:
-      - main
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -44,7 +40,6 @@ jobs:
         python -m flake8 backend/
         cd backend/
         python manage.py test
-  if: github.ref == 'refs/heads/main'
   build_and_push_to_docker_hub:
     runs-on: ubuntu-latest
     needs: tests
@@ -64,7 +59,6 @@ jobs:
           context: ./backend/
           push: true
           tags: antaresweb/kittygram_backend:latest
-  if: github.ref == 'refs/heads/main'
   frontend_tests:
     runs-on: ubuntu-latest
     steps:
@@ -81,7 +75,6 @@ jobs:
       run: |
         cd frontend/
         npm run test
-  if: github.ref == 'refs/heads/main'
   build_frontend_and_push_to_docker_hub:
     name: Push frontend Docker image to DockerHub
     runs-on: ubuntu-latest
@@ -102,7 +95,6 @@ jobs:
           context: ./frontend/
           push: true
           tags: antaresweb/kittygram_frontend:latest
-  if: github.ref == 'refs/heads/main'
   build_gateway_and_push_to_docker_hub:
     name: Push gateway Docker image to DockerHub
     runs-on: ubuntu-latest
@@ -122,7 +114,6 @@ jobs:
           context: ./gateway/
           push: true
           tags: antaresweb/kittygram_gateway:latest
-  if: github.ref == 'refs/heads/main'
   deploy:
     runs-on: ubuntu-latest
     needs: 
