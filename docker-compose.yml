@@ -17,13 +17,13 @@ services:
     depends_on:
       - db
     volumes:
-      - static:/backend_static
-      - media:/media
+      - static:/static
+      - media:/app/media
   frontend:
     image: frontend
-    command: cp -r /app/build/. /frontend_static/
+    command: cp -r /app/build/. /static/
     volumes:
-      - static:/frontend_static
+      - static:/static
   gateway:
     image: gateway
     depends_on:
@@ -33,3 +33,4 @@ services:
       - 9000:80
     volumes:
       - static:/static
+      - media:/media
