@@ -9,7 +9,10 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '158.160.69.56', 'nekonosekai.hopto.org']
+ALLOWED_HOSTS = [
+    '127.0.0.1', 'localhost',
+    '158.160.69.56', 'nekonosekai.hopto.org'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
