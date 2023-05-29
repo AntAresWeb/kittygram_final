@@ -1,11 +1,12 @@
-# flake8: noqa
-from decouple import config
+from django.core.management.utils import get_random_secret_key
+# from decouple import config
 import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY')
+#SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = get_random_secret_key
 
 DEBUG = False
 
@@ -58,6 +59,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -66,6 +68,17 @@ DATABASES = {
         'PASSWORD': config('POSTGRES_PASSWORD', ''),
         'HOST': config('DB_HOST', ''),
         'PORT': config('DB_PORT', 5432)
+    }
+}
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django',
+        'USER': 'django_user',
+        'PASSWORD': 'django_password',
+        'HOST': 'db',
+        'PORT': 5432
     }
 }
 
