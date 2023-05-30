@@ -1,12 +1,10 @@
-from django.core.management.utils import get_random_secret_key
-# from decouple import config
+from decouple import config
 import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#SECRET_KEY = config('SECRET_KEY')
-SECRET_KEY = get_random_secret_key
+SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = False
 
@@ -25,6 +23,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'djoser',
+    'decouple',
     'cats.apps.CatsConfig',
 ]
 
