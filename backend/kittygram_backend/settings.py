@@ -1,11 +1,13 @@
+from django.core.management.utils import get_random_secret_key
 import os
 from pathlib import Path
 
-from decouple import config
+# from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = get_random_secret_key()
 
 DEBUG = False
 
@@ -57,6 +59,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -78,7 +81,6 @@ DATABASES = {
         'PORT': 5432
     }
 }
-"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
